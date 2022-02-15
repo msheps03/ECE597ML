@@ -14,7 +14,7 @@ def cost_function( x, y, theta0, theta1 ):
     """
     
     h_x = theta1 * x + theta0
-    cost = (1/2) * sum([val**2 for val in (y-y_pred)])
+    cost = (1/2) * sum([val**2 for val in (y-h_x)])
     
     return cost
 
@@ -38,8 +38,8 @@ def gradient(x, y, theta0, theta1, step_size):
     h_x = (theta1 * x) + theta0
 
     # Evaluate the derivatives
-    d_theta1 = (2) * sum(x * (h_x-y))
-    d_theta0 = (2) * sum(h_x-y)
+    d_theta1 = 2 * sum(x * (h_x-y))
+    d_theta0 = 2 * sum(h_x-y)
 
     # update theta0, theta1
     theta1 = theta1 - (step_size * d_theta1)
